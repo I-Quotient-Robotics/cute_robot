@@ -1,6 +1,6 @@
 <robot
   name="cute_300es" xmlns:xacro="http://www.ros.org/wiki/xacro">
-  
+
   <xacro:include filename="$(find cute_model)/robots/materials.xacro" />
   
   <xacro:include filename="$(find cute_model)/robots/cute_model.gazebo" />
@@ -28,7 +28,7 @@
     <inertial>
       <origin
         xyz="-0.00099787 0.019958 0.22081"
-        rpy="0 0 0" />
+        rpy="0 0 ${-PI/2}" />
       <mass
         value="9.0546" />
       <inertia
@@ -42,7 +42,7 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 0 ${-PI/2}" />
       <geometry>
         <mesh
           filename="package://cute_model/meshes/cute_300es/base_link.STL" />
@@ -64,7 +64,7 @@
     <inertial>
       <origin
         xyz="0.0011123 -0.017941 0.13361"
-        rpy="0 0 0" />
+        rpy="0 0 ${PI}" />
       <mass
         value="9.0546" />
       <inertia
@@ -78,7 +78,7 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 0 ${PI}" />
       <geometry>
         <mesh
           filename="package://cute_model/meshes/cute_300es/part1.STL" />
@@ -118,7 +118,7 @@
     <inertial>
       <origin
         xyz="-0.00099787 0.018042 0.070815"
-        rpy="0 0 0" />
+        rpy="0 0 ${PI}" />
       <mass
         value="9.0546" />
       <inertia
@@ -132,7 +132,7 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 0 ${PI}" />
       <geometry>
         <mesh
           filename="package://cute_model/meshes/cute_300es/part2.STL" />
@@ -172,7 +172,7 @@
     <inertial>
       <origin
         xyz="-0.00099787 0.018033 -0.0060119"
-        rpy="0 0 0" />
+        rpy="0 0 ${PI}" />
       <mass
         value="9.0546" />
       <inertia
@@ -186,7 +186,7 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 0 ${PI}" />
       <geometry>
         <mesh
           filename="package://cute_model/meshes/cute_300es/part3.STL" />
@@ -351,7 +351,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://cute_model/meshes/cute_300es/part6.STL" />
+          filename="package://cute_model/meshes/cute_300es/part6_fix.STL" />
       </geometry>
       <material name="gray"/>
     </visual>
@@ -361,7 +361,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://cute_model/meshes/cute_300es/part6.STL" />
+          filename="package://cute_model/meshes/cute_300es/part6_fix.STL" />
       </geometry>
     </collision>
   </link>
@@ -370,13 +370,13 @@
     type="revolute">
     <origin
       xyz="0.00145 0 0.06663"
-      rpy="0 0 -1.8142" />
+      rpy="0 0 ${-PI/2}" />
     <parent
       link="part5" />
     <child
       link="part6" />
     <axis
-      xyz="-0.24105 0.97051 0" />
+      xyz="0 1.0 0" />
     <limit
       lower="${-1*vertical_joint_limit}"
       upper="${vertical_joint_limit}"
@@ -405,7 +405,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://cute_model/meshes/cute_300es/part7.STL" />
+          filename="package://cute_model/meshes/cute_300es/part7_fix.STL" />
       </geometry>
       <material name="gray"/>
     </visual>
@@ -415,7 +415,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://cute_model/meshes/cute_300es/part7.STL" />
+          filename="package://cute_model/meshes/cute_300es/part7_fix.STL" />
       </geometry>
     </collision>
   </link>
@@ -424,7 +424,7 @@
     type="revolute">
     <origin
       xyz="0 0 0.027"
-      rpy="0 0 -1.2645" />
+      rpy="0 0 ${-PI/2}" />
     <parent
       link="part6" />
     <child
@@ -481,8 +481,8 @@
     name="claw"
     type="prismatic">
     <origin
-      xyz="0.00075017 0.011926 0.1118"
-      rpy="${PI/2} 0 -1.6336" />
+      xyz="0.0 0.011926 0.1118"
+      rpy="${PI/2} 0 ${-PI/2}" />
     <parent
       link="part7" />
     <child
@@ -539,8 +539,8 @@
     name="claw_pris2"
     type="prismatic">
     <origin
-      xyz="-0.00075017 -0.011926 0.1118"
-      rpy="${PI/2} 0 1.508" />
+      xyz="-0.0 -0.011926 0.1118"
+      rpy="${PI/2} 0 ${PI/2}" />
     <parent
       link="part7" />
     <child
